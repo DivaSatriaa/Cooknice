@@ -107,24 +107,24 @@
     </div> 
     
     
-    <?php if (isset($component)) { $__componentOriginalaf931c6533813c406795ddc6c29437fc = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalaf931c6533813c406795ddc6c29437fc = $attributes; } ?>
-<?php $component = App\View\Components\Clickedprofile::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('clickedprofile'); ?>
+    <?php if (isset($component)) { $__componentOriginalee101339da4a776c518469591417bd80 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalee101339da4a776c518469591417bd80 = $attributes; } ?>
+<?php $component = App\View\Components\ClickedProfile::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('clicked-profile'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Clickedprofile::ignoredParameterNames()); ?>
+<?php $attributes = $attributes->except(\App\View\Components\ClickedProfile::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalaf931c6533813c406795ddc6c29437fc)): ?>
-<?php $attributes = $__attributesOriginalaf931c6533813c406795ddc6c29437fc; ?>
-<?php unset($__attributesOriginalaf931c6533813c406795ddc6c29437fc); ?>
+<?php if (isset($__attributesOriginalee101339da4a776c518469591417bd80)): ?>
+<?php $attributes = $__attributesOriginalee101339da4a776c518469591417bd80; ?>
+<?php unset($__attributesOriginalee101339da4a776c518469591417bd80); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalaf931c6533813c406795ddc6c29437fc)): ?>
-<?php $component = $__componentOriginalaf931c6533813c406795ddc6c29437fc; ?>
-<?php unset($__componentOriginalaf931c6533813c406795ddc6c29437fc); ?>
+<?php if (isset($__componentOriginalee101339da4a776c518469591417bd80)): ?>
+<?php $component = $__componentOriginalee101339da4a776c518469591417bd80; ?>
+<?php unset($__componentOriginalee101339da4a776c518469591417bd80); ?>
 <?php endif; ?>
 
     

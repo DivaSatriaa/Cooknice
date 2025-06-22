@@ -12,7 +12,7 @@
             <div class="bg-white p-2 rounded-full">
                 <img src="{{ asset('gambar/home.png') }}" alt="beranda" class="w-6 h-6" />
             </div>
-            <span class="text-lg font-semibold hidden sm:inline">
+            <span class="text-lg font-semibold sidebar-label hidden sm:inline">
                 Beranda
             </span>
         </a>
@@ -21,7 +21,7 @@
             <div class="bg-white p-2 rounded-full">
                 <img src="{{ asset('gambar/dish (1).png') }}" alt="makanan" class="w-6 h-6" />
             </div>
-            <span class="text-lg font-semibold hidden sm:inline">
+            <span class="text-lg font-semibold sidebar-label hidden sm:inline">
                 Makanan
             </span>
         </a>
@@ -30,7 +30,7 @@
             <div class="bg-white p-2 rounded-full">
                 <img src="{{ asset('gambar/soda.png') }}" alt="minuman" class="w-6 h-6" />
             </div>
-            <span class="text-lg font-semibold hidden sm:inline">
+            <span class="text-lg font-semibold sidebar-label hidden sm:inline">
                 Minuman
             </span>
         </a>
@@ -39,7 +39,7 @@
             <div class="bg-white p-2 rounded-full">
                 <img src="{{ asset('gambar/nuggets.png') }}" alt="cemilan" class="w-6 h-6" />
             </div>
-            <span class="text-lg font-semibold hidden sm:inline">
+            <span class="text-lg font-semibold sidebar-label hidden sm:inline">
                 Cemilan
             </span>
         </a>
@@ -48,9 +48,15 @@
             <div class="bg-white p-2 rounded-full">
                 <img src="{{ asset('gambar/bookmark.png') }}" alt="koleksi" class="w-6 h-6" />
             </div>
-            <span class="text-lg font-semibold hidden sm:inline">
+            <span class="text-lg font-semibold sidebar-label hidden sm:inline">
                 Koleksi
             </span>
         </a>
     </nav>
 </aside>
+
+<style>
+    .sidebar-label.sm\:inline {
+        display: inline !important;
+    }
+</style>

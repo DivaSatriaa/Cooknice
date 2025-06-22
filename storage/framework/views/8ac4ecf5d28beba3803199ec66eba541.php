@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <?php echo app('Illuminate\Foundation\Vite')('resources/css/app.css'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('build/assets/app-CMmxYR91.css')); ?>" >
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Cemilan</title>
+    <link rel="icon" href="<?php echo e(asset('gambar/fixlogo.png')); ?>" type="image/png">
   </head>
 
   <body class="bg-[#F9E2AF]">
@@ -77,24 +78,24 @@
           <div class="grid grid-cols-4 gap-6 p-4">
             <!-- Card -->
             <?php $__currentLoopData = $recipes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recipe): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-              <?php if (isset($component)) { $__componentOriginal081d319767d5e7203090f5ea3bdd8568 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal081d319767d5e7203090f5ea3bdd8568 = $attributes; } ?>
-<?php $component = App\View\Components\Cardresep::resolve(['recipe' => $recipe] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('cardresep'); ?>
+              <?php if (isset($component)) { $__componentOriginale43b550a14883d0248293fe4806b335a = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginale43b550a14883d0248293fe4806b335a = $attributes; } ?>
+<?php $component = App\View\Components\CardResep::resolve(['recipe' => $recipe] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('card-resep'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Cardresep::ignoredParameterNames()); ?>
+<?php $attributes = $attributes->except(\App\View\Components\CardResep::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginal081d319767d5e7203090f5ea3bdd8568)): ?>
-<?php $attributes = $__attributesOriginal081d319767d5e7203090f5ea3bdd8568; ?>
-<?php unset($__attributesOriginal081d319767d5e7203090f5ea3bdd8568); ?>
+<?php if (isset($__attributesOriginale43b550a14883d0248293fe4806b335a)): ?>
+<?php $attributes = $__attributesOriginale43b550a14883d0248293fe4806b335a; ?>
+<?php unset($__attributesOriginale43b550a14883d0248293fe4806b335a); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginal081d319767d5e7203090f5ea3bdd8568)): ?>
-<?php $component = $__componentOriginal081d319767d5e7203090f5ea3bdd8568; ?>
-<?php unset($__componentOriginal081d319767d5e7203090f5ea3bdd8568); ?>
+<?php if (isset($__componentOriginale43b550a14883d0248293fe4806b335a)): ?>
+<?php $component = $__componentOriginale43b550a14883d0248293fe4806b335a; ?>
+<?php unset($__componentOriginale43b550a14883d0248293fe4806b335a); ?>
 <?php endif; ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             
@@ -104,24 +105,24 @@
       </div>
     </div> 
     
-    <?php if (isset($component)) { $__componentOriginalaf931c6533813c406795ddc6c29437fc = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalaf931c6533813c406795ddc6c29437fc = $attributes; } ?>
-<?php $component = App\View\Components\Clickedprofile::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('clickedprofile'); ?>
+    <?php if (isset($component)) { $__componentOriginalee101339da4a776c518469591417bd80 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalee101339da4a776c518469591417bd80 = $attributes; } ?>
+<?php $component = App\View\Components\ClickedProfile::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('clicked-profile'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Clickedprofile::ignoredParameterNames()); ?>
+<?php $attributes = $attributes->except(\App\View\Components\ClickedProfile::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginalaf931c6533813c406795ddc6c29437fc)): ?>
-<?php $attributes = $__attributesOriginalaf931c6533813c406795ddc6c29437fc; ?>
-<?php unset($__attributesOriginalaf931c6533813c406795ddc6c29437fc); ?>
+<?php if (isset($__attributesOriginalee101339da4a776c518469591417bd80)): ?>
+<?php $attributes = $__attributesOriginalee101339da4a776c518469591417bd80; ?>
+<?php unset($__attributesOriginalee101339da4a776c518469591417bd80); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalaf931c6533813c406795ddc6c29437fc)): ?>
-<?php $component = $__componentOriginalaf931c6533813c406795ddc6c29437fc; ?>
-<?php unset($__componentOriginalaf931c6533813c406795ddc6c29437fc); ?>
+<?php if (isset($__componentOriginalee101339da4a776c518469591417bd80)): ?>
+<?php $component = $__componentOriginalee101339da4a776c518469591417bd80; ?>
+<?php unset($__componentOriginalee101339da4a776c518469591417bd80); ?>
 <?php endif; ?>
 
     

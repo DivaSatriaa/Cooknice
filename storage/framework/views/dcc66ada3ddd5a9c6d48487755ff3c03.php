@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Cooknice</title>
-    <?php echo app('Illuminate\Foundation\Vite')('resources/css/app.css'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('build/assets/app-CMmxYR91.css')); ?>" >
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="<?php echo e(asset('gambar/fixlogo.png')); ?>" type="image/png">
   </head>

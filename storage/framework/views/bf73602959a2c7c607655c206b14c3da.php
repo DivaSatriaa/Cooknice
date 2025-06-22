@@ -1,4 +1,6 @@
-<?php $__env->startSection('title', 'Upload Resep'); ?>
+
+
+<?php $__env->startSection('title', 'Edit Resep'); ?>
 
 <?php $__env->startSection('content'); ?>
 <div class="flex h-screen overflow-hidden">
@@ -43,7 +45,7 @@
 <?php endif; ?>
         <div class="bg-white rounded-lg p-6 w-full h-full">
             <div class="bg-white rounded-lg w-full h-full p-6">
-                <h2 class="text-2xl font-semibold mb-4">Upload Resep</h2>
+                <h2 class="text-2xl font-semibold mb-4">Edit Resep</h2>
 
                 <?php if(session('success')): ?>
                     <div class="bg-green-100 text-green-800 p-4 rounded mb-4">
@@ -67,8 +69,9 @@
                     </div>
                 <?php endif; ?>
 
-                <form action="<?php echo e(route('recipe.store')); ?>" method="POST" enctype="multipart/form-data" class="md:flex md:space-x-6">
+                <form action="<?php echo e(route('recipe.update', $recipe->id)); ?>" method="POST" enctype="multipart/form-data" class="md:flex md:space-x-6">
                     <?php echo csrf_field(); ?>
+                    <?php echo method_field('PATCH'); ?>
 
                     <!-- Bagian kiri: Foto dan bahan -->
                     <div class="w-full md:w-1/3">
@@ -81,7 +84,7 @@
                             ondragover="event.preventDefault()"
                             ondrop="handleDrop(event)"
                         >
-                            <img id="preview" src="<?php echo e(asset('images/camera.png')); ?>" alt="Preview" class="w-12 h-12 mb-2">
+                            <img id="preview" src="<?php echo e($recipe->main_image ? asset('storage/' . $recipe->main_image) : asset('images/camera.png')); ?>" alt="Preview" class="<?php echo e($recipe->main_image ? 'object-cover w-full h-full rounded-lg' : 'w-12 h-12 mb-2'); ?>">
                             <p class="font-semibold text-gray-700/70">Foto Resep</p>
                             <p class="text-sm text-gray-500 text-center">Klik atau tarik file ke sini</p>
                         </div>
@@ -101,7 +104,9 @@ unset($__errorArgs, $__bag); ?>
                         <div class="mt-6">
                             <label class="block font-medium text-xl mb-2">Bahan</label>
                             <div id="bahan-container" class="space-y-2 text-xl">
-                                <input type="text" name="bahan[]" class="border p-2 rounded w-full" required>
+                                <?php $__currentLoopData = $recipe->ingredients ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $bahan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <input type="text" name="bahan[]" value="<?php echo e($bahan); ?>" class="border p-2 rounded w-full" required>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
                             <?php $__errorArgs = ['bahan.*'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -123,7 +128,7 @@ unset($__errorArgs, $__bag); ?>
                     <div class="w-full md:w-2/3 space-y-6 mt-6 md:mt-0">
                         <div>
                             <label class="block font-medium text-xl">Judul Resep</label>
-                            <input type="text" name="title" value="<?php echo e(old('title')); ?>" class="border p-2 rounded w-full text-xl" required>
+                            <input type="text" name="title" value="<?php echo e(old('title', $recipe->title)); ?>" class="border p-2 rounded w-full text-xl" required>
                             <?php $__errorArgs = ['title'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -141,7 +146,7 @@ unset($__errorArgs, $__bag); ?>
                             <select name="category_id" class="border p-2 rounded w-full text-xl text-gray-700/70" required>
                                 <option value="">-- Pilih Kategori --</option>
                                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($category->id); ?>" <?php echo e(old('category_id') == $category->id ? 'selected' : ''); ?>><?php echo e($category->name); ?></option>
+                                    <option value="<?php echo e($category->id); ?>" <?php echo e(old('category_id', $recipe->category_id) == $category->id ? 'selected' : ''); ?>><?php echo e($category->name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
                             <?php $__errorArgs = ['category_id'];
@@ -158,7 +163,7 @@ unset($__errorArgs, $__bag); ?>
 
                         <div>
                             <label class="block font-medium text-xl">Deskripsi</label>
-                            <textarea name="description" rows="5" class="border p-2 rounded w-full text-xl"><?php echo e(old('description')); ?></textarea>
+                            <textarea name="description" rows="5" class="border p-2 rounded w-full text-xl"><?php echo e(old('description', $recipe->description)); ?></textarea>
                             <?php $__errorArgs = ['description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -173,7 +178,7 @@ unset($__errorArgs, $__bag); ?>
 
                         <div>
                             <label class="block font-medium text-xl">Porsi</label>
-                            <input type="text" name="porsi" value="<?php echo e(old('porsi')); ?>" class="border p-2 rounded w-full text-xl">
+                            <input type="text" name="porsi" value="<?php echo e(old('porsi', $recipe->servings)); ?>" class="border p-2 rounded w-full text-xl">
                             <?php $__errorArgs = ['porsi'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -188,7 +193,7 @@ unset($__errorArgs, $__bag); ?>
 
                         <div>   
                             <label class="block font-medium text-xl">Durasi</label>
-                            <input type="text" name="durasi" value="<?php echo e(old('durasi')); ?>" class="border p-2 rounded w-full text-xl">
+                            <input type="text" name="durasi" value="<?php echo e(old('durasi', $recipe->duration)); ?>" class="border p-2 rounded w-full text-xl">
                             <?php $__errorArgs = ['durasi'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -204,32 +209,35 @@ unset($__errorArgs, $__bag); ?>
                         <div>
                             <label class="block font-medium text-xl mb-1">Langkah-langkah Memasak</label>
                             <div id="langkah-container" class="space-y-4">
-                                <div class="flex items-start space-x-3">
-                                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-[#F58E4A] text-white font-bold text-xl mt-1">
-                                        1
-                                    </div>
-                                    <div class="flex-1 space-y-2">
-                                        <textarea name="langkah[]" rows="3" class="border p-2 rounded w-full text-xl" required><?php echo e(old('langkah.0')); ?></textarea>
-                                        <div
-                                            class="border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-50"
-                                            style="width: 80px; height: 80px;"
-                                            onclick="this.nextElementSibling.click()"
-                                        >
-                                            <img src="<?php echo e(asset('images/camera.png')); ?>" alt="Preview" class="w-6 h-6">
+                                <?php $__currentLoopData = $recipe->steps ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $langkah): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="flex items-start space-x-3">
+                                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-[#F58E4A] text-white font-bold text-xl mt-1">
+                                            <?php echo e($index + 1); ?>
+
                                         </div>
-                                        <input type="file" name="foto_langkah[]" class="hidden" accept="image/jpeg,image/png,image/jpg,image/gif" onchange="previewStepImage(this)">
-                                        <?php $__errorArgs = ['foto_langkah.0'];
+                                        <div class="flex-1 space-y-2">
+                                            <textarea name="langkah[]" rows="3" class="border p-2 rounded w-full text-xl" required><?php echo e($langkah); ?></textarea>
+                                            <div
+                                                class="border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-50"
+                                                style="width: 80px; height: 80px;"
+                                                onclick="this.nextElementSibling.click()"
+                                            >
+                                                <img src="<?php echo e(isset($recipe->step_images[$index]) ? asset('storage/' . $recipe->step_images[$index]) : asset('images/camera.png')); ?>" alt="Preview" class="w-6 h-6 <?php echo e(isset($recipe->step_images[$index]) ? 'object-cover w-full h-full' : ''); ?>">
+                                            </div>
+                                            <input type="file" name="foto_langkah[]" class="hidden" accept="image/jpeg,image/png,image/jpg,image/gif" onchange="previewStepImage(this)">
+                                            <?php $__errorArgs = ['foto_langkah.' . $index];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                            <p class="text-red-500 text-sm"><?php echo e($message); ?></p>
-                                        <?php unset($message);
+                                                <p class="text-red-500 text-sm"><?php echo e($message); ?></p>
+                                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
                             <?php $__errorArgs = ['langkah.*'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -246,9 +254,14 @@ unset($__errorArgs, $__bag); ?>
                             </button>
                         </div>
 
-                        <button type="submit" class="bg-[#F58E4A] text-white px-10 py-4 rounded-md hover:bg-[#f56c4a] cursor-pointer text-xl">
-                            Terbitkan
-                        </button>
+                        <div class="flex space-x-4">
+                            <button type="submit" class="bg-[#F58E4A] text-white px-10 py-4 rounded-md hover:bg-[#f56c4a] cursor-pointer text-xl">
+                                Perbarui
+                            </button>
+                            <a href="<?php echo e(route('profile.show')); ?>" class="bg-gray-300 text-gray-700 px-10 py-4 rounded-md hover:bg-gray-400 cursor-pointer text-xl">
+                                Batal
+                            </a>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -312,11 +325,8 @@ function handleFile(files) {
     reader.onload = function (e) {
         const preview = document.getElementById('preview');
         preview.src = e.target.result;
-        preview.classList.add('object-cover');
+        preview.classList.add('object-cover', 'w-full', 'h-full', 'rounded-lg');
         preview.classList.remove('w-12', 'h-12', 'mb-2');
-        preview.style.width = '100%';
-        preview.style.height = '100%';
-        preview.style.borderRadius = '0.5rem';
     };
     reader.readAsDataURL(file);
 }
@@ -352,11 +362,12 @@ function previewStepImage(input) {
     const reader = new FileReader();
     reader.onload = function (e) {
         input.previousElementSibling.querySelector('img').src = e.target.result;
+        input.previousElementSibling.querySelector('img').classList.add('object-cover', 'w-full', 'h-full');
     };
     reader.readAsDataURL(file);
 }
 
-let langkahCounter = 2;
+let langkahCounter = <?php echo e(count($recipe->steps ?? []) + 1); ?>;
 
 function tambahLangkah() {
     const container = document.getElementById('langkah-container');
@@ -389,5 +400,4 @@ function tambahLangkah() {
 }
 </script>
 <?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\ASUS\Cooknice2\resources\views/uploadresep.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\ASUS\Cooknice2\resources\views/editresep.blade.php ENDPATH**/ ?>
