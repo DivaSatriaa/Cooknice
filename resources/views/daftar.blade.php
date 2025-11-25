@@ -19,11 +19,9 @@
     <div class="flex items-center space-x-1 mt-4 mb-6 justify-center">
     <!-- Logo bundar -->
     <div class="bg-[#F9E2AF] rounded-full p-3 flex items-center justify-center w-12 h-12">
-      <!-- Gunakan icon chef sebagai placeholder (bisa ganti dengan SVG atau gambar asli) -->
       <img src="/gambar/fixlogo.png" class="w-11 h-11 object-cover" />
     </div>
 
-    <!-- Teks Cooknice dengan jempol -->
     <div class="flex items-center space-x-2">
       <img src="/gambar/fixtextlogo.png" class="h-[120px] w-auto object-contain" />
     </div>
