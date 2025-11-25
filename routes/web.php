@@ -81,6 +81,6 @@ Route::middleware('auth')->group(function () {
 });
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::delete('/admin/recipes/{recipe}', [AdminController::class, 'destroy'])->name('admin.recipe.destroy'); // Mengubah nama route agar konsisten
-    Route::delete('/admin/users/{user}', [AdminController::class, 'destroyUser'])->name('admin.user.destroy'); // Route baru untuk menghapus pengguna
+    Route::delete('/admin/recipes/{recipe}', [AdminController::class, 'destroy'])->name('admin.recipe.destroy');
+    Route::delete('/admin/users/{user}', [AdminController::class, 'destroyUser'])->name('admin.user.destroy');
 });
