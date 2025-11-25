@@ -159,7 +159,6 @@
               document.body.style.overflow = 'auto';
           }
 
-          // Tutup popup saat klik di luar kotak popup
           document.getElementById('email-popup-wrapper').addEventListener('click', function(event) {
               const popup = document.getElementById('gantiemail');
               if (!popup.contains(event.target)) {
