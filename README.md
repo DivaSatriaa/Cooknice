@@ -33,7 +33,7 @@ Admin can manage users and recipes through a dedicated admin panel.
 ## 🗂️ Tech Stack
 | Layer | Technology |
 |------|------------|
-| Backend | Laravel 10+ |
+| Backend | Laravel 12 |
 | Frontend | Blade Templates, Tailwind CSS |
 | Database | MySQL (XAMPP) |
 | Storage | Laravel Storage (public link) |
@@ -58,9 +58,12 @@ Admin can manage users and recipes through a dedicated admin panel.
 <img width="1919" height="943" alt="Screenshot 2025-11-25 183736" src="https://github.com/user-attachments/assets/04c88bd3-3a3a-471b-8e4b-6e2a33f65c5d" />
 
 ### 👤 User Profile
-<img width="1919" height="942" alt="Screenshot 2025-11-25 183805" src="https://github.com/user-attachments/assets/3461d386-de27-4be8-b47c-3ce81653e5ec" />
+<img width="1918" height="939" alt="Screenshot 2025-11-28 165959" src="https://github.com/user-attachments/assets/f69e75c4-0757-4956-b99a-53b9ecae93a5" />
 
-### ✏️ Edit Recipe
+### ✏️ Edit And Delete Recipe Option
+<img width="415" height="283" alt="Screenshot 2025-11-28 165926" src="https://github.com/user-attachments/assets/fe9addb3-dba6-47b6-9a89-afe4a1db8a16" />
+
+### ✏️ Edit Recipe Page
 <img width="1919" height="942" alt="Screenshot 2025-11-28 164340" src="https://github.com/user-attachments/assets/627dad80-6f16-4c2e-897e-bb5ed26e0dd5" />
 
 ### ✏️ Edit Profile Page
