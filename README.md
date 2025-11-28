@@ -60,6 +60,9 @@ Admin can manage users and recipes through a dedicated admin panel.
 ### 👤 User Profile
 <img width="1919" height="942" alt="Screenshot 2025-11-25 183805" src="https://github.com/user-attachments/assets/3461d386-de27-4be8-b47c-3ce81653e5ec" />
 
+### ✏️ Edit Recipe
+<img width="1919" height="942" alt="Screenshot 2025-11-28 164340" src="https://github.com/user-attachments/assets/627dad80-6f16-4c2e-897e-bb5ed26e0dd5" />
+
 ### ✏️ Edit Profile Page
 <img width="1916" height="1027" alt="Screenshot 2025-11-25 180634" src="https://github.com/user-attachments/assets/943c3c7d-04db-4c21-9ae6-2ab58a89a245" />
 
